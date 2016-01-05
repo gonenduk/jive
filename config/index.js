@@ -12,13 +12,13 @@ var config = {
     providers: [
       {
         name: 'prov1',
-        bulkSize: 0,
-        minFlushRate: 0,
+        bulkSize: 2,
+        minFlushRate: 5,
         maxFlushRate: 0
       },
       {
         name: 'prov2',
-        bulkSize: 0,
+        bulkSize: 100,
         minFlushRate: 0,
         maxFlushRate: 0
       }
