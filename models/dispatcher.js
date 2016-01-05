@@ -8,18 +8,29 @@ var Provider = require('./provider');
 var dispatcher = {
   providers: {},       // will hold a map of providers (indexed by name)
 
-  add: function (name, bulkSize, minFlushRate, maxFlushRate) {
-    this.providers[name] = new Provider(bulkSize, minFlushRate, maxFlushRate);
+  add: function (provider) {
+    this.providers[provider.name] = new Provider(provider);
   },
 
-  remove: function (name) {
+  delete: function (name) {
     delete this.providers[name];
+  },
+
+  update: function (name, provider) {
+    // Update provider
+    this.providers[name].update(provider);
+
+    // Update key of map on name change
+    if (name != provider.name) {
+      this.providers[provider.name] = this.providers[name];
+      delete this.providers[name];
+    }
   }
 };
 
 // Initialize dispatcher with providers from config file
 config.providers.forEach(function (provider) {
-  dispatcher.add(provider.name, provider.bulkSize, provider.minFlushRate, provider.maxFlushRate);
+  dispatcher.add(provider);
 });
 
 // Export dispatcher

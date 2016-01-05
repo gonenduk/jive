@@ -2,10 +2,18 @@
  * Provider object
  */
 
-function Provider(bulkSize, minFlushRate, maxFlushRate) {
-  this.bulkSize = bulkSize;
-  this.minFlushRate = minFlushRate;
-  this.maxFlushRate = maxFlushRate;
+function Provider(provider) {
+  this.name = provider.name;
+  this.bulkSize = provider.bulkSize;
+  this.minFlushRate = provider.minFlushRate;
+  this.maxFlushRate = provider.maxFlushRate;
+}
+
+Provider.prototype.update = function (provider) {
+  this.name = provider.name;
+  this.bulkSize = provider.bulkSize;
+  this.minFlushRate = provider.minFlushRate;
+  this.maxFlushRate = provider.maxFlushRate;
 }
 
 // Export provider constructor
