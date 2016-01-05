@@ -13,7 +13,7 @@ var config = {
       {
         name: 'prov1',
         bulkSize: 2,
-        minFlushRate: 5,
+        minFlushRate: 3,
         maxFlushRate: 0
       },
       {
