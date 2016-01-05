@@ -25,6 +25,14 @@ var dispatcher = {
       this.providers[provider.name] = this.providers[name];
       delete this.providers[name];
     }
+  },
+
+  report: function (data) {
+    for (name in this.providers) {
+      if (this.providers.hasOwnProperty(name)) {
+        this.providers[name].report(data);
+      }
+    }
   }
 };
 

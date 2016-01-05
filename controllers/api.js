@@ -69,6 +69,9 @@ router.get('/providers', function(req, res, next) {
  */
 
 // Create
-
+router.post('/reports', function(req, res, next) {
+  dispatcher.report(req.body);
+  res.status(201).end();
+});
 
 module.exports = router;
